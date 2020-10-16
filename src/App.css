@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.input-label {
+  display: inline-block;
+  width: 80px;
+}
+
+.username-input {
+  width: calc(100% - 100px);
+}
+
+.app-container {
+  width: 400px;
+  margin:0 auto;
+}
+
+.confirm-btn {
+  float: right;
+  padding: 6px 24px;
+  background-color: blue;
+}
+
+.comment-input {
+  margin-top: 12px;
+}
+
+.comment-content-container {
+  height: 80px;
+  border-bottom: 1px solid red;
+}
