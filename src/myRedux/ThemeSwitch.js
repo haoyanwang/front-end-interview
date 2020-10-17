@@ -1,13 +1,43 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
 class ThemeSwitch extends Component {
-    render () {
+    static contextTypes = {
+        store: PropTypes.object,
+    }
+
+    constructor() {
+        super();
+        this.state = {
+            themeColor: ''
+        }
+    }
+
+    handleSwitchColor(color) {
+        const { store } = this.context;
+        store.dispatch({
+            type: 'CHANGE_COLOR',
+            themeColor: color
+        })
+    }
+
+    render() {
         return (
             <div>
-                <button>Red</button>
-                <button>Blue</button>
+                <button style={{color: this.props.themeColor}} onClick={this.handleSwitchColor.bind(this, 'red')}>Red</button>
+                <button style={{color: this.props.themeColor}} onClick={this.handleSwitchColor.bind(this, 'blue')}>Blue</button>
             </div>
         )
     }
 }
-export default ThemeSwitch
+
+const mapStateToProps = (state) => {
+    return {
+        themeColor: state.themeColor
+    }
+}
+
+const ConnectThemeSwitch = connect(mapStateToProps)(ThemeSwitch)
+
+export default ConnectThemeSwitch

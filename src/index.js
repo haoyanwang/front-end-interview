@@ -5,13 +5,17 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 // import Index from './App'
 import Index from './myRedux/index'
+import {Provider} from "react-redux";
+import {store} from './myRedux/index'
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Index />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Provider store={store}>
+            <Index/>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
